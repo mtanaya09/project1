@@ -7,19 +7,18 @@
                 <img src="https://cdn-icons-png.flaticon.com/512/2202/2202129.png" style="height:150px;"class="rounded-circle">
             </div>
             <div class="col-9 pt-5">
-                <div>
-                    <h1>Reflect Practice</h1>
+                <div class="d-flex justify-content-between align-items-baseline">
+                    <h1>{{ $user->username }}</h1>
+                    <a href="#">Add New Post</a>
                 </div>
                 <div class="d-flex">
                     <div><strong>153</strong> posts</div>
                     <div class="px-3"><strong>23k</strong> followers</div>
                     <div class="px-3"><strong>212</strong> following</div>
                 </div>
-                <div class="pt-4"><strong>reflect-practice.yey</strong></div>
-                <div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
-                    rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                    explicabo.</div>
-                <div><a href="#">www.reflect-practice.yey</a></div>
+                <div class="pt-4"><strong>{{ $user->profile->title }}</strong></div>
+                <div>{{ $user->profile->description }}</div>
+                <div><a href="#">{{ $user->profile->url }}</a></div>
             </div>
         </div>
 

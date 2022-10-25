@@ -19,4 +19,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\ProfilesController::class, 'index'])->name('home');
+
+//create post route
+Route::get('/p/create', [App\Http\Controllers\PostsController::class, 'create']);  
+
+//post route
+Route::post('/p', [App\Http\Controllers\PostsController::class, 'store']);  
+
+//profile route
+Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');
+
+
+
+
