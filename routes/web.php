@@ -19,7 +19,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+/*  POST CONTROLLER STARTS HERE  */
+
 // Route::get('/home', [App\Http\Controllers\ProfilesController::class, 'index'])->name('home');
+
+//show route
+Route::get('/p/{post}', [App\Http\Controllers\PostsController::class, 'show']);  
 
 //create post route
 Route::get('/p/create', [App\Http\Controllers\PostsController::class, 'create']);  
@@ -27,8 +33,17 @@ Route::get('/p/create', [App\Http\Controllers\PostsController::class, 'create'])
 //post route
 Route::post('/p', [App\Http\Controllers\PostsController::class, 'store']);  
 
+
+/*  PROFILE CONTROLLER STARTS HERE  */
+
 //profile route
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');
+
+//edit profile
+Route::get('/profile/{user}/edit', [App\Http\Controllers\ProfilesController::class, 'edit'])->name('profile.edit');
+
+//update profile
+Route::patch('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'update'])->name('profile.update');
 
 
 
