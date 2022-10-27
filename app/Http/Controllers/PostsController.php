@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class PostsController extends Controller
 {
     // to protect the route (user must login)
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
@@ -18,21 +19,18 @@ class PostsController extends Controller
 
     public function store()
     {
-        $data = request()->validate([
-            // 'user_id' => 'required',
+        $data = request()->validate([ 
             'caption' => 'required',
             'image' => 'required|image',
         ]);
 
-        // saving caption
-        // $post = new \App\Models\Post();
-        // $post->caption = $data['caption'];
-        // $post->save();
+        $imagePath = request('image')->store('uploads', 'public');
 
-        auth()->user()->posts()->create($data);
+        auth()->user()->posts()->create([
+            'caption' => $data['caption'],
+            'image' => $imagePath,
+        ]);
 
-        // \App\Models\Post::create($data);
-
-        dd(request()->all());
+        return redirect('/profile/' . auth()->user()->id);
     }
 }
