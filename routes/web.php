@@ -24,14 +24,15 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\ProfilesController::class, 'index'])->name('home');
 
-//show route
-Route::get('/p/{post}', [App\Http\Controllers\PostsController::class, 'show']);  
 
 //create post route
-Route::get('/p/create', [App\Http\Controllers\PostsController::class, 'create']);  
+Route::get('/p/create', [App\Http\Controllers\PostsController::class, 'create']);
+
+//show route
+Route::get('/p/{post}', [App\Http\Controllers\PostsController::class, 'show']);
 
 //post route
-Route::post('/p', [App\Http\Controllers\PostsController::class, 'store']);  
+Route::post('/p', [App\Http\Controllers\PostsController::class, 'store']);
 
 
 /*  PROFILE CONTROLLER STARTS HERE  */
@@ -44,7 +45,3 @@ Route::get('/profile/{user}/edit', [App\Http\Controllers\ProfilesController::cla
 
 //update profile
 Route::patch('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'update'])->name('profile.update');
-
-
-
-

@@ -4,14 +4,22 @@
     <div class="container">
         <div class="row">
             <div class="col-3 p-5">
-                <img src="https://cdn-icons-png.flaticon.com/512/2202/2202129.png" style="height:150px;"class="rounded-circle">
+                <img src="/storage/{{$user->profile->image}}" class="rounded-circle w-100">
             </div>
             <div class="col-9 pt-5">
                 <div class="d-flex justify-content-between align-items-baseline">
                     <h1>{{ $user->username }}</h1>
-                    <a href="/p/create">Add New Post</a>
+                    {{-- hide the add post link for visitor page --}}
+                @can('update', $user->profile)
+                <a href="/p/create">Add New Post</a>
+                @endcan
+                    
                 </div>
+                {{-- hide the edit profile link for visitor page --}}
+                @can('update', $user->profile)
                 <a href="/profile/{{$user->id}}/edit">Edit Profile</a>
+                @endcan
+
                 <div class="d-flex">
                     <div><strong>{{ $user->posts->count() }}</strong> posts</div>
                     <div class="px-3"><strong>23k</strong> followers</div>
