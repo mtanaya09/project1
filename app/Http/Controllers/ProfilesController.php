@@ -13,11 +13,13 @@ class ProfilesController extends Controller
         return view('profiles.index', compact('user'));
     }
 
-    public function edit(User $user){
+    public function edit(User $user)
+    {
         return view('profiles.edit', compact('user'));
     }
 
-    public function update(User $user){
+    public function update(User $user)
+    {
         $data = request()->validate([
             'title' => 'required',
             'description' => 'required',
