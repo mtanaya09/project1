@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FollowsController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +21,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//Axios route
+Route::post('follow/{user}', [App\Http\Controllers\FollowsController::class, 'store']);
+
 
 /*  POST CONTROLLER STARTS HERE  */
 
@@ -35,7 +40,7 @@ Route::get('/p/{post}', [App\Http\Controllers\PostsController::class, 'show']);
 Route::post('/p', [App\Http\Controllers\PostsController::class, 'store']);
 
 
-/*  PROFILE CONTROLLER STARTS HERE  */
+/*  PROFILE CONTROLLER STARTS HERE  */ //error pa
 
 //profile route
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');
